@@ -11,13 +11,8 @@ from datetime import datetime
 
 
 
-
+#translate human-readble term code into a code processed by the banner system
 def term_to_termcode(term):
-	"""
-	Translates a human-readable term i.e. "Fall 2010"
-	into the "termcode" parameter that the Middlebury
-	Course Catalog database URL uses.
-	"""
 	normalized_term = term.strip().lower()
 	season, year = normalized_term.split(' ')[0], normalized_term.split(' ')[1]
 
@@ -32,8 +27,6 @@ def term_to_termcode(term):
 	else:
 		season = 'UNKNOWN'
 		print ('Error in determining the season of the given term!')
-
-
 	return "1" + year + season
 
 
@@ -106,8 +99,6 @@ if (__name__ == "__main__"):
                 EC.presence_of_element_located((By.ID, "enterCRNs-tab"))
             )
 
-
-
             element.click()
             addAnother = driver.find_element_by_id("addAnotherCRN")
 
@@ -124,24 +115,6 @@ if (__name__ == "__main__"):
             time.sleep(3)
             driver.find_element_by_id("saveButton").click()
             time.sleep(5)
-
-            """
-            # check if the table has pending stat
-            def check_pending():
-                rows = len(driver.find_elements_by_xpath("//*[@id='summaryBody']/div[1]/div/table/tbody/tr"))
-
-                for row in range(1, rows+1):
-                    print(row)
-                    x_path_b = "//*[@id='summaryBody']/div[1]/div/table/tbody/tr["+str(row)+"]/td[6]/span"
-                    b = driver.find_element_by_xpath(x_path_b).text
-                    if b == "Pending":
-                        return False
-                return True
-
-            wait = WebDriverWait(driver, 10)
-            pending_out = driver.find_element_by_xpath()
-            element = wait.until(check_pending())
-            """
 
             #count table rows
             rows = len(driver.find_elements_by_xpath("//*[@id='summaryBody']/div[1]/div/table/tbody/tr"))
