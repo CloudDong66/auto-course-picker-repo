@@ -2,7 +2,7 @@
 
 
 
-This is a python script using Selenium WebDriver with Chromedriver to automation your college course registration.
+This is a python script using Selenium WebDriver with Chromedriver to automate your college course registration.
 
 Made for UIUC, works on all BannerWeb System with a bit modification
 
